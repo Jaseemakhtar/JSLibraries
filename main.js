@@ -1,31 +1,15 @@
-let thrash = $('.fas.fa-trash-alt');
-let btnLong = $('#btn-long');
-let x, hold;
+window.onload = () => {
+    let thrash = $('.fas.fa-trash-alt');
+    let btnLong = $('#btn-long');
 
-btnLong.addEventListener('mouseup', ev => {
-    let now = Date.now();
-    if((now - hold) <= 2000)
-        clearTimeout(x);
-});
+    //From click library
+    let onLongClick = new LongClickListener(btnLong, onHold);
 
-btnLong.addEventListener('mousedown', ev => {
-    x = setTimeout(onHold, 2000);
-    hold = Date.now();
-});
+    function onHold() {
+        thrash.classList.remove('hide');
+    }
 
-thrash.addEventListener('click', ev => {
-   thrash.classList.add('hide');
-   alert("Deleted Item");
-});
-
-function onHold() {
-    thrash.classList.remove('hide');
-}
-
-function $(element) {
-    return document.querySelector(element);
-}
-
-function l(msg) {
-    console.log(msg);
+    function $(element) {
+        return document.querySelector(element);
+    }
 }
