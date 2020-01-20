@@ -1,15 +1,20 @@
 window.onload = () => {
-    let thrash = $('.fas.fa-trash-alt');
-    let btnLong = $('#btn-long');
+    var thrash = $('.fas.fa-trash-alt');
+    var btnLong = $('#btn-long');
 
     //From click library
-    let onLongClick = new LongClickListener(btnLong, onHold);
+    new LongClickListener(btnLong, onHold);
 
     function onHold() {
         thrash.classList.remove('hide');
     }
 
+    thrash.addEventListener('click',()=>{
+        thrash.classList.add('hide');
+        confirm("Are you sure?");
+    })
+
     function $(element) {
         return document.querySelector(element);
     }
-}
+};

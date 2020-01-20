@@ -1,15 +1,15 @@
 function LongClickListener(element, handler) {
     this.element = element;
     this.handler = handler;
-
-    this.element.addEventListener('mouseup', ev => {
-        let now = Date.now();
-        if((now - this.hold) <= 2000)
-            clearTimeout(this.x);
+    var self = this;
+    this.element.addEventListener('mouseup', function(ev){
+        var now = Date.now();
+        if((now - self.hold) <= 2000)
+            clearTimeout(self.x);
     });
-    this.element.addEventListener('mousedown', ev => {
+    this.element.addEventListener('mousedown', function(ev) {
         ev.preventDefault();
-        this.x = setTimeout(this.handler, 2000);
-        this.hold = Date.now();
+        self.x = setTimeout(self.handler, 1800);
+        self.hold = Date.now();
     });
 }
